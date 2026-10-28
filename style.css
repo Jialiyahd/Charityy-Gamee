@@ -1,0 +1,515 @@
+
+/* =========================================
+   25. DIFFICULTY SELECTION
+========================================= */
+
+.difficulty-section {
+  background-color: #fff9df;
+  border: 2px solid #f7e49b;
+  border-radius: 14px;
+  padding: 24px;
+  margin: 24px 0;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.difficulty-section h2 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.difficulty-section p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.difficulty-options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.difficulty-options label {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+#difficulty {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+
+  background-color: white;
+  color: var(--text-primary);
+
+  border: 2px solid var(--cw-yellow);
+  border-radius: 10px;
+
+  padding: 12px 18px;
+  min-width: 160px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#difficulty:hover:not(:disabled) {
+  background-color: #fff4bd;
+  border-color: var(--cw-yellow-hover);
+}
+
+#difficulty:focus-visible {
+  outline: 3px solid var(--cw-blue);
+  outline-offset: 3px;
+}
+
+#difficulty:disabled {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.difficulty-description {
+  background-color: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 18px;
+  margin-bottom: 0 !important;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--cw-blue-dark) !important;
+}
+
+
+/* =========================================
+   26. MILESTONE SECTION
+========================================= */
+
+.milestone-section {
+  background-color: #f0f9ff;
+  border: 2px solid #dbeafe;
+  border-radius: 14px;
+
+  padding: 24px;
+  margin: 24px 0;
+
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.milestone-section h2 {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.milestone-message {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cw-blue-dark);
+
+  background-color: white;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+
+  padding: 14px 18px;
+  margin: 12px auto 20px;
+
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+}
+
+
+/* =========================================
+   27. SCORE PROGRESS BAR
+========================================= */
+
+.score-progress-track {
+  width: 100%;
+  height: 18px;
+
+  background-color: #e2e8f0;
+  border-radius: 20px;
+
+  overflow: hidden;
+  margin: 18px auto 10px;
+
+  border: 1px solid #cbd5e1;
+}
+
+.score-progress-fill {
+  width: 0%;
+  height: 100%;
+
+  background: linear-gradient(
+    90deg,
+    var(--cw-yellow),
+    var(--cw-green)
+  );
+
+  border-radius: 20px;
+
+  transition: width 0.4s ease;
+}
+
+.progress-label {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-top: 10px;
+}
+
+#progress-score {
+  color: var(--cw-blue-dark);
+  font-weight: 900;
+}
+
+#progress-goal {
+  color: var(--cw-dark-green);
+  font-weight: 900;
+}
+
+
+/* =========================================
+   28. CORRECT ITEM REMOVAL
+========================================= */
+
+/* Item disappears after correct sorting */
+
+.grid-cell.sorted-correct {
+  background-color: #dcfce7;
+  border: 2px solid var(--cw-dark-green);
+
+  animation: itemDisappear 0.3s ease forwards;
+}
+
+@keyframes itemDisappear {
+
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================
+   29. INCORRECT ITEM BOUNCE
+========================================= */
+
+.grid-cell.sorted-incorrect {
+  background-color: #fee2e2;
+  border: 2px solid var(--cw-red);
+
+  animation: itemBounce 0.4s ease;
+}
+
+@keyframes itemBounce {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-8px);
+  }
+
+  40% {
+    transform: translateX(8px);
+  }
+
+  60% {
+    transform: translateX(-5px);
+  }
+
+  80% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================================
+   30. NEW ITEM ANIMATION
+========================================= */
+
+.grid-cell.waste-item {
+  animation: itemAppear 0.3s ease;
+}
+
+@keyframes itemAppear {
+
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================
+   31. FOOTER DONATION LINKS
+========================================= */
+
+.app-footer nav {
+  margin-top: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.app-footer nav a {
+  color: var(--cw-blue-dark);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app-footer nav a:hover {
+  color: #104d80;
+  text-decoration: underline;
+}
+
+.app-footer nav span {
+  color: #94a3b8;
+}
+
+
+/* =========================================
+   32. BUTTON AND ITEM IMPROVEMENTS
+========================================= */
+
+.action-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.grid-cell:focus-visible {
+  outline: 3px solid var(--cw-blue-dark);
+  outline-offset: 3px;
+}
+
+.bin-btn:focus-visible {
+  outline: 3px solid var(--cw-yellow);
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   33. TABLET RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+
+  .difficulty-section {
+    padding: 20px;
+  }
+
+  .difficulty-section h2 {
+    font-size: 20px;
+  }
+
+  .milestone-section {
+    padding: 20px;
+  }
+
+  .milestone-section h2 {
+    font-size: 20px;
+  }
+
+  .milestone-message {
+    font-size: 14px;
+  }
+
+}
+
+
+/* =========================================
+   34. MOBILE RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 640px) {
+
+  .difficulty-section {
+    padding: 18px 14px;
+    margin: 18px 0;
+  }
+
+  .difficulty-section h2 {
+    font-size: 19px;
+  }
+
+  .difficulty-section p {
+    font-size: 13px;
+  }
+
+  .difficulty-options {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .difficulty-options label {
+    font-size: 14px;
+  }
+
+  #difficulty {
+    width: 100%;
+    max-width: 260px;
+    font-size: 14px;
+  }
+
+  .difficulty-description {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .milestone-section {
+    padding: 18px 12px;
+    margin: 18px 0;
+  }
+
+  .milestone-section h2 {
+    font-size: 18px;
+  }
+
+  .milestone-message {
+    font-size: 13px;
+    padding: 12px;
+    min-height: 50px;
+  }
+
+  .score-progress-track {
+    height: 15px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+  }
+
+  .app-footer nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .app-footer nav span {
+    display: none;
+  }
+
+  .app-footer nav a {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================
+   35. EXTRA SMALL SCREENS
+========================================= */
+
+@media (max-width: 360px) {
+
+  .difficulty-section {
+    padding: 14px 10px;
+  }
+
+  .difficulty-section h2 {
+    font-size: 17px;
+  }
+
+  .milestone-section {
+    padding: 14px 10px;
+  }
+
+  .milestone-message {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================
+   36. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .grid-cell.sorted-correct,
+  .grid-cell.sorted-incorrect,
+  .grid-cell.waste-item {
+    animation: none !important;
+  }
+
+  .score-progress-fill {
+    transition: none !important;
+  }
+  
+/* Make the game controls visible */
+.controls-area {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 25px auto;
+  padding: 15px;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#start-game,
+#reset-game {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative;
+  z-index: 10;
+  padding: 15px 25px;
+  background-color: #FFC907;
+  color: #222;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+}
